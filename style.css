@@ -525,7 +525,7 @@ textarea {
     padding-right: 0.3125rem;
   }
   #basis-header-nav li.basis-menu-item-parent a:after {
-    content: url(images/parent-menu-item-arrow.svg);
+    content: '';
     position: relative;
     top: -2px;
     top: -0.125rem;
