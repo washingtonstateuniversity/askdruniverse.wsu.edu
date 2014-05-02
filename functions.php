@@ -19,4 +19,4 @@ function druni_mailchimp_display() {
 
 	return $output;
 }
-add_shortcode( 'ucomm_asset_request', array( $this, 'ucomm_asset_request_display' ) );
+
