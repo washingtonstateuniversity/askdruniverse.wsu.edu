@@ -1,4 +1,2 @@
-askdruniverse.wsu.edu
-=====================
-
-Ask Dr. Universe Theme
+# druniverse.wsu.edu-dev
+A child theme of the WSU Spine for Dr. Universe

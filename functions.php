@@ -1,22 +1,22 @@
 <?php
 
-add_shortcode( 'druni_mailchimp', 'druni_mailchimp_display' );
+include_once( 'includes/dru-shortcodes.php' ); // Handle custom shortcodes for Ucomm.
 
-function druni_mailchimp_display() {
-	ob_start();
-	?>
-	<!-- Begin MailChimp Signup Form -->
-	<div id="mc_embed_signup"><form id="mc-embedded-subscribe-form" class="validate" action="http://wsu.us8.list-manage.com/subscribe/post?u=b2f74b8c89ecbda4a1f889759&amp;id=ee29e0ff6f" method="post" name="mc-embedded-subscribe-form" novalidate="" target="_blank"><label for="mce-EMAIL">Stay up-to-date with Dr. Universe</label>
-			<input id="mce-EMAIL" class="email" name="EMAIL" required="" type="email" value="" placeholder="email address" />
-			<input id="mc-embedded-subscribe" class="button" name="subscribe" type="submit" value="Subscribe" />
-			<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-			<div style="position: absolute; left: -5000px;"><input name="b_b2f74b8c89ecbda4a1f889759_ee29e0ff6f" type="text" value="" /></div>
-		</form></div>
-	<!--End mc_embed_signup-->
-	<?php
-	$output = ob_get_contents();
-	ob_end_clean();
+add_action( 'wp_enqueue_scripts', 'dru_child_enqueue_scripts');
+/**
+* Enqueue custom scripting in child theme.
+*/
+function dru_child_enqueue_scripts() {
+    wp_enqueue_script( 'drutypekit', 'https://use.typekit.net/lss5xzj.js', true );
+    wp_enqueue_script( 'drutrycache', get_stylesheet_directory_uri() . '/js/trytypekit.js', array( 'jquery' ), spine_get_script_version(), true );
 
-	return $output;
+}
+
+add_action( 'after_setup_theme', 'dru_theme_setup' );
+/**
+ * Process various tasks when setting up the theme.
+ */
+function dru_theme_setup() {
+    add_theme_support( 'html5', array( 'search-form' ) );
 }
 
