@@ -1,10 +1,6 @@
 <div role="header" id="drBanner" class="stars">
 	<div class="drUlogo">
-		<a href="/"></a>
-	</div>
-	<div class="drUplanet">
-	</div>
-	<div class="drUniverse">
+		<a href="/"><img class="dr-logo" src="https://s3.wp.wsu.edu/uploads/sites/2332/2018/11/DrU-logo-2016.png" alt="Ask Dr. Universe logo" width="250" height"93"/></a>
 	</div>
 </div>
 <nav class="main-menu">
@@ -22,3 +18,5 @@
 	);
 	wp_nav_menu( $spine_site_args ); ?>
 </nav>
+<div class="search-box">
+</div>
