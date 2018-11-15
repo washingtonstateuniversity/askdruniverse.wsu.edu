@@ -31,7 +31,19 @@ class Dru_Sidebars {
 				'name'          => 'Site Footer',
 				'id'            => 'site_footer',
 				'description'   => 'Widgets in this area will be shown on all posts and pages.',
-				'before_widget' => '<div id="%1$s" class="widget %2$s">',
+				'before_widget' => '<div id="%1$s" class="widget widget-site-footer %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="widgettitle">',
+				'after_title'   => '</h2>',
+			)
+		);
+
+		register_sidebar(
+			array(
+				'name'          => 'Site Header',
+				'id'            => 'site_header',
+				'description'   => 'Widgets in this area will be shown on all posts and pages.',
+				'before_widget' => '<div id="%1$s" class="widget widget-site-header %2$s">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h2 class="widgettitle">',
 				'after_title'   => '</h2>',
