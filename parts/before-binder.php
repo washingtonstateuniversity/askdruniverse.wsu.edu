@@ -6,6 +6,7 @@
 	</div>
 	<div class="drUniverse">
 	</div>
+	<?php if ( is_active_sidebar( 'site_header' ) ) : ?><div class="dr-universe-header-widgets"><?php dynamic_sidebar( 'site_header' ); ?></div><?php endif ?>
 </div>
 <nav class="main-menu">
 	<?php

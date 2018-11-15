@@ -1,6 +1,8 @@
 <?php
 
-include_once( 'includes/dru-shortcodes.php' ); // Handle custom shortcodes for Ucomm.
+include_once __DIR__ . '/includes/dru-shortcodes.php'; // Handle custom shortcodes for Ucomm.
+
+include_once __DIR__ . '/includes/dru-sidebars.php'; // Handle custom sidebars for Ucomm.
 
 add_action( 'wp_enqueue_scripts', 'dru_child_enqueue_scripts');
 /**
@@ -19,4 +21,3 @@ add_action( 'after_setup_theme', 'dru_theme_setup' );
 function dru_theme_setup() {
 	add_theme_support( 'html5', array( 'search-form' ) );
 }
-
