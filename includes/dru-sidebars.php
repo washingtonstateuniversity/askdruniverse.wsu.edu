@@ -50,6 +50,30 @@ class Dru_Sidebars {
 			)
 		);
 
+		register_sidebar(
+			array(
+				'name'          => 'Search: No Results Text',
+				'id'            => 'search_text',
+				'description'   => 'Widgets in this area will be shown on the no results page.',
+				'before_widget' => '<div id="%1$s" class="widget widget-search-text %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="widgettitle">',
+				'after_title'   => '</h2>',
+			)
+		);
+
+		register_sidebar(
+			array(
+				'name'          => '404 Text',
+				'id'            => 'not_found_text',
+				'description'   => 'Widgets in this area will be shown on the 404 page.',
+				'before_widget' => '<div id="%1$s" class="widget widget-search-text %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2 class="widgettitle">',
+				'after_title'   => '</h2>',
+			)
+		);
+
 	}
 
 } // End Dru_Sidebars
