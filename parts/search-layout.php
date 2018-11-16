@@ -1,35 +1,29 @@
-<section class="row side-right gutter pad-ends">
+<section class="row single gutter pad-ends">
 
 	<div class="column one">
 
-		<?php get_template_part( 'parts/search/search-bar' ); ?>
-
 		<?php if ( have_posts() ) : ?>
 
-		<?php while ( have_posts() ) : the_post(); ?>
+			<h1>Here are your search results for <span><?php echo get_search_query(); ?></span></h1>
 
-			<?php get_template_part( 'articles/search', get_post_type() ); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-		<?php endwhile; ?>
+				<?php get_template_part( 'articles/search', get_post_type() ); ?>
+
+			<?php endwhile; ?>
 
 		<?php else : ?>
 
-			<div class="dr-search-empty-results">
-				Sorry, no results found.
+			<h1>Sorry, we couldn't find anything for <span><?php echo get_search_query(); ?></span></h1>
+			<div class="dr-universe-empty-search">
+				<div class="dr-universe-empty-search-bg">
+				</div>
+				<div class="dr-universe-empty-search-text-wrapper">
+					<?php if ( is_active_sidebar( 'search_text' ) ) : ?><div class="dr-universe-search-text-widgets"><?php dynamic_sidebar( 'search_text' ); ?></div><?php endif ?>
+				</div>
 			</div>
-
 		<?php endif; ?>
 
 	</div><!--/column-->
-
-	<div class="column two">
-
-		<?php if ( is_active_sidebar( 'search_sidebar' ) ) {
-
-			dynamic_sidebar( 'search_sidebar' );
-
-		} ?>
-
-	</div><!--/column two-->
 
 </section>
