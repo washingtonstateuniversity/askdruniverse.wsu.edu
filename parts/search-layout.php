@@ -15,10 +15,10 @@
 		<?php else : ?>
 
 			<h1>Sorry, we couldn't find anything for <span><?php echo get_search_query(); ?></span></h1>
-			<div class="dr-universe-empty-search">
-				<div class="dr-universe-empty-search-bg">
+			<div class="dr-universe-cloud unbound recto verso">
+				<div class="dr-universe-cloud-bg">
 				</div>
-				<div class="dr-universe-empty-search-text-wrapper">
+				<div class="dr-universe-cloud-text-wrapper">
 					<?php if ( is_active_sidebar( 'search_text' ) ) : ?><div class="dr-universe-search-text-widgets"><?php dynamic_sidebar( 'search_text' ); ?></div><?php endif ?>
 				</div>
 			</div>
