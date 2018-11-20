@@ -1,80 +1,74 @@
 <?php $post_share_placement = spine_get_option( 'post_social_placement' ); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<div class="article-link-wrapper">
-		<header class="article-header">
-			<hgroup>
-			<?php if ( is_single() ) : ?>
-				<?php if ( true === spine_get_option( 'articletitle_show' ) ) : ?>
-					<h1 class="article-title"><?php the_title(); ?></h1>
-				<?php endif; ?>
-			<?php else : ?>
-				<h2 class="article-title">
-					<?php the_title(); ?>
-				</h2>
+	<header class="article-header">
+		<hgroup>
+		<?php if ( is_single() ) : ?>
+			<?php if ( true === spine_get_option( 'articletitle_show' ) ) : ?>
+				<h1 class="article-title"><?php echo wp_kses_post( dr_get_post_title( get_the_ID() ) ); ?></h1>
 			<?php endif; ?>
-			</hgroup>
-			<hgroup class="source">
-				<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
-				<cite class="article-author">
-					<?php
-					if ( '1' === spine_get_option( 'show_author_page' ) ) {
-						the_author_posts_link();
-					} else {
-						echo esc_html( get_the_author() );
-					}
-					?>
-				</cite>
-			</hgroup>
-
-			<?php
-			if ( is_singular() && in_array( $post_share_placement, array( 'top', 'both' ) ) ) {
-				get_template_part( 'parts/share-tools' );
-			}
-			?>
-		</header>
-		<?php if ( ! is_singular() ) : ?>
-			<div class="article-summary">
-				<?php
-
-				if ( spine_has_thumbnail_image() ) {
-					?><figure class="article-thumbnail"><?php spine_the_thumbnail_image(); ?></figure><?php
-				} elseif ( spine_has_featured_image() ) {
-					?><figure class="article-thumbnail"><?php the_post_thumbnail( 'spine-thumbnail_size' ); ?></figure><?php
-				}
-
-				// If a manual excerpt is available, default to that. If `<!--more-->` exists in content, default
-				// to that. If an option is set specifically to display excerpts, default to that. Otherwise show
-				// full content.
-				elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
-					
-					$content = get_the_content('');
-
-					echo str_replace('h1', 'h2', $content );
-
-				} elseif ( $post->post_excerpt ) {
-					echo get_the_excerpt();
-				} elseif ( 'excerpt' === spine_get_option( 'archive_content_display' ) ) {
-					the_excerpt();
-				} else {
-					the_content();
-				}
-
-				?>
-			</div><!-- .article-summary -->
 		<?php else : ?>
-			<div class="article-body">
-				<?php the_content(); ?>
-				<?php
-				wp_link_pages( array(
-					'before' => '<div class="page-links">' . __( 'Pages:', 'spine' ),
-					'after' => '</div>',
-				) );
-				?>
-			</div>
+			<h2 class="article-title">
+				<?php echo wp_kses_post( dr_get_post_title( get_the_ID() ) ); ?>
+			</h2>
 		<?php endif; ?>
-		<div class="article-link">Read More about <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></div>
-	</div>
+		</hgroup>
+		<hgroup class="source">
+			<time class="article-date" datetime="<?php echo get_the_date( 'c' ); ?>"><?php echo get_the_date(); ?></time>
+			<cite class="article-author">
+				<?php
+				if ( '1' === spine_get_option( 'show_author_page' ) ) {
+					the_author_posts_link();
+				} else {
+					echo esc_html( get_the_author() );
+				}
+				?>
+			</cite>
+		</hgroup>
+
+		<?php
+		if ( is_singular() && in_array( $post_share_placement, array( 'top', 'both' ) ) ) {
+			get_template_part( 'parts/share-tools' );
+		}
+		?>
+	</header>
+
+	<?php if ( ! is_singular() ) : ?>
+		<div class="article-summary">
+			<?php
+
+			// If a manual excerpt is available, default to that. If `<!--more-->` exists in content, default
+			// to that. If an option is set specifically to display excerpts, default to that. Otherwise show
+			// full content.
+			if ( $post->post_excerpt ) {
+				echo get_the_excerpt() . ' <a href="' . get_permalink() . '"><span class="excerpt-more-default">&raquo; More ...</span></a>';
+			} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
+
+				$excerpt = get_the_content('');
+
+				echo wp_kses_post( dr_get_clean_excerpt( $excerpt ) );
+
+			} elseif ( 'excerpt' === spine_get_option( 'archive_content_display' ) ) {
+				the_excerpt();
+			} else {
+				the_content();
+			}
+
+			?>
+			<span class="Read More">Read More...</span>
+		</div><!-- .article-summary -->
+	<?php else : ?>
+		<div class="article-body">
+			<?php the_content(); ?>
+			<?php
+			wp_link_pages( array(
+				'before' => '<div class="page-links">' . __( 'Pages:', 'spine' ),
+				'after' => '</div>',
+			) );
+			?>
+		</div>
+	<?php endif; ?>
+
 	<footer class="article-footer">
 		<?php
 		if ( is_singular() && in_array( $post_share_placement, array( 'bottom', 'both' ) ) ) {

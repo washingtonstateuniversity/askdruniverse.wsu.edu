@@ -4,6 +4,8 @@ include_once __DIR__ . '/includes/dru-shortcodes.php'; // Handle custom shortcod
 
 include_once __DIR__ . '/includes/dru-sidebars.php'; // Handle custom sidebars for Ucomm.
 
+include_once __DIR__ . '/includes/post/dru-post.php'; // Handle custom sidebars for Ucomm.
+
 add_action( 'wp_enqueue_scripts', 'dru_child_enqueue_scripts');
 /**
 * Enqueue custom scripting in child theme.
@@ -21,3 +23,42 @@ add_action( 'after_setup_theme', 'dru_theme_setup' );
 function dru_theme_setup() {
 	add_theme_support( 'html5', array( 'search-form' ) );
 }
+
+/**
+ * Get post title for Dr post
+ *
+ * @since 0.0.22
+ *
+ * @param int $post_id Current post id
+ */
+function dr_get_post_title( $post_id ) {
+
+	$question = get_post_meta( get_the_ID(), '_dr_question_text', true );
+
+	if ( $question ) {
+
+		return $question;
+
+	} else {
+
+		return get_the_title( $post_id );
+
+	} // End if
+
+} // End dr_get_post_title
+
+
+/**
+ * Clean tags from excerpt with more tag
+ *
+ * @since 0.0.22
+ *
+ * @param string $excerpt Current excerpt
+ */
+function dr_get_clean_excerpt( $excerpt ) {
+
+	$excerpt = wpautop( wp_strip_all_tags( $excerpt ) );
+
+	return $excerpt;
+
+} // End dr_get_clean_excerpt
