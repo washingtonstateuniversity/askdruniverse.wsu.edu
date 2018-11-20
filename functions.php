@@ -6,6 +6,8 @@ include_once __DIR__ . '/includes/dru-sidebars.php'; // Handle custom sidebars f
 
 include_once __DIR__ . '/includes/post/dru-post.php'; // Handle custom sidebars for Ucomm.
 
+include_once __DIR__ . '/includes/taxonomy/dru-taxonomy.php'; // Handle taxonomy features.
+
 add_action( 'wp_enqueue_scripts', 'dru_child_enqueue_scripts');
 /**
 * Enqueue custom scripting in child theme.
