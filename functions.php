@@ -8,6 +8,8 @@ include_once __DIR__ . '/includes/post/dru-post.php'; // Handle custom sidebars 
 
 include_once __DIR__ . '/includes/taxonomy/dru-taxonomy.php'; // Handle taxonomy features.
 
+include_once __DIR__ . '/includes/wsuwp-json/dru-post.php'; // Handle shortcode overrides.
+
 add_action( 'wp_enqueue_scripts', 'dru_child_enqueue_scripts');
 /**
 * Enqueue custom scripting in child theme.
