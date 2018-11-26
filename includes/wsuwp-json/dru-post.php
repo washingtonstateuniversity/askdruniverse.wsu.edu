@@ -18,19 +18,21 @@ class Dru_WSUWP_JSON {
 
 		add_action( 'rest_api_init', array( $this, 'add_question_api' ) );
 
+		//apply_filters( 'wsu_content_syndicate_host_data', $subset, $post, $atts );
+
 	} // End __construct
 
 
 	/**
 	 * Change shortcode output if is set to drunivers
-	 * 
+	 *
 	 * @since 0.0.23
-	 * 
+	 *
 	 * @param bool|string $html Html output.
 	 * @param array $new_data Array of post objects.
 	 * @param array $atts Array of shortcode atts.
-	 * 
-	 * @return string|bool Html for shortcode or false in ignore.  
+	 *
+	 * @return string|bool Html for shortcode or false in ignore.
 	 */
 	public function get_shortcode_output( $html, $new_data, $atts ) {
 
@@ -51,7 +53,7 @@ class Dru_WSUWP_JSON {
 
 	/**
 	 * Add data to REST API response.
-	 * 
+	 *
 	 * @since 0.0.23
 	 */
 	public function add_question_api() {
@@ -71,11 +73,11 @@ class Dru_WSUWP_JSON {
 
 	/**
 	 * Get data for response
-	 * 
+	 *
 	 * @since 0.0.23
-	 * 
+	 *
 	 * @param object $object Current post object.
-	 * 
+	 *
 	 * @return string Value of question meta data.
 	 */
 	public function get_question_post_meta_for_api( $object ) {
