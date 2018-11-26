@@ -18,10 +18,33 @@ class Dru_WSUWP_JSON {
 
 		add_action( 'rest_api_init', array( $this, 'add_question_api' ) );
 
-		//apply_filters( 'wsu_content_syndicate_host_data', $subset, $post, $atts );
+		add_filter( 'wsu_content_syndicate_host_data', array( $this, 'add_question_to_response' ), 10, 3 );
 
 	} // End __construct
 
+
+	/**
+	 * Add question to content syndicate object
+	 *
+	 * @since 0.0.24
+	 *
+	 * @param array $subset Array of objects containing post data.
+	 * @param object $post WordPress REST API response data for given post.
+	 * @param array $atts Shortcode attributes
+	 *
+	 * @return array Array of custom objects for display.
+	 */
+	public function add_question_to_response( $subset, $post, $atts ) {
+
+		if ( isset( $post->question ) ) {
+
+			$subset->question = $post->question;
+
+		} // End if
+
+		return $subset;
+
+	} // End add_question_to_response
 
 	/**
 	 * Change shortcode output if is set to drunivers
@@ -58,7 +81,6 @@ class Dru_WSUWP_JSON {
 	 */
 	public function add_question_api() {
 
-		// register_rest_field ( 'name-of-post-type', 'name-of-field-to-return', array-of-callbacks-and-schema() )
 		register_rest_field(
 			'post',
 			'question',
