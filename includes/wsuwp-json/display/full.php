@@ -8,8 +8,6 @@
 				continue;
 			}
 
-			var_dump( $content );
-
 			$dr_title = ( isset( $content->question ) ) ? $content->question : $content->title;
 
 			?>

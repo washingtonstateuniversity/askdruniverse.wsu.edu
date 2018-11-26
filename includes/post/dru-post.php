@@ -55,7 +55,6 @@ class Dru_Post {
 			return false;
 
 		} // end if
-		
 
 		if ( isset( $_REQUEST['dr_question'] ) ) {
 
