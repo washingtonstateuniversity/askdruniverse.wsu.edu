@@ -18,6 +18,7 @@ function dru_child_enqueue_scripts() {
 	//wp_enqueue_script( 'drutypekit', 'https://use.typekit.net/lss5xzj.js', true );
 	//wp_enqueue_script( 'drutrycache', get_stylesheet_directory_uri() . '/js/trytypekit.js', array( 'jquery' ), spine_get_script_version(), true );
 	wp_enqueue_style( 'dradobetykie-bg', 'https://use.typekit.net/lss5xzj.css', array(), '0.0.1' );
+	wp_enqueue_script( 'dr-public', get_stylesheet_directory_uri() . '/js/drjs-public.js', array( 'jquery' ), '0.0.1', true );
 }
 
 add_action( 'after_setup_theme', 'dru_theme_setup' );
