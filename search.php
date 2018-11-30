@@ -8,8 +8,6 @@ $main_class = 'spine-search-index';
 
 <main id="wsuwp-main" class="spine-search-index">
 
-	test search
-
 <?php
 
 get_template_part( 'parts/headers' );

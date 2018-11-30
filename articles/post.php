@@ -9,7 +9,7 @@
 			<?php endif; ?>
 		<?php else : ?>
 			<h2 class="article-title">
-				<?php echo wp_kses_post( dr_get_post_title( get_the_ID() ) ); ?>
+			<a href="<?php the_permalink(); ?>" rel="bookmark"><?php echo wp_kses_post( dr_get_post_title( get_the_ID() ) ); ?></a>
 			</h2>
 		<?php endif; ?>
 		</hgroup>
