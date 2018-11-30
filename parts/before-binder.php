@@ -1,4 +1,4 @@
-<div role="header" id="drBanner" class="stars">
+<div id="drBanner" class="stars">
 	<div class="drUlogo">
 		<a href="/"></a>
 	</div>
