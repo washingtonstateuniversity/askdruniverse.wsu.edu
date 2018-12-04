@@ -3,7 +3,7 @@
 	<div class="column one"><?php bcn_display(); ?></div>
 	</section><?php
 } ?>
-<section class="row side-right gutter pad-ends">
+<section class="row single gutter pad-ends">
 
 	<div class="column one">
 
@@ -14,11 +14,5 @@
 		<?php endwhile; ?>
 
 	</div><!--/column-->
-
-	<div class="column two">
-
-		<?php get_sidebar(); ?>
-
-	</div><!--/column two-->
 
 </section>
