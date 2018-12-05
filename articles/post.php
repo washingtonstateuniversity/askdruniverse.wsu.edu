@@ -41,10 +41,10 @@
 			// to that. If an option is set specifically to display excerpts, default to that. Otherwise show
 			// full content.
 			if ( $post->post_excerpt ) {
-				echo get_the_excerpt() . ' <a href="' . get_permalink() . '"><span class="excerpt-more-default">&raquo; More ...</span></a>';
+				echo get_the_excerpt();
 			} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
 
-				$excerpt = get_the_content('');
+				$excerpt = get_the_content( '' );
 
 				echo wp_kses_post( dr_get_clean_excerpt( $excerpt ) );
 
@@ -55,7 +55,7 @@
 			}
 
 			?>
-			<span class="Read More">Read More...</span>
+			<a href="<?php the_permalink(); ?>"><span class="excerpt-more-default">Read More ...</span></a>
 		</div><!-- .article-summary -->
 	<?php else : ?>
 		<div class="article-body">
