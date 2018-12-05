@@ -40,7 +40,12 @@
 			// If a manual excerpt is available, default to that. If `<!--more-->` exists in content, default
 			// to that. If an option is set specifically to display excerpts, default to that. Otherwise show
 			// full content.
-			if ( $post->post_excerpt ) {
+
+			if ( 'video' === get_post_format( $post->ID ) ) {
+
+				the_content();
+
+			} elseif ( $post->post_excerpt ) {
 				echo get_the_excerpt();
 			} elseif ( strstr( $post->post_content, '<!--more-->' ) ) {
 
@@ -55,7 +60,9 @@
 			}
 
 			?>
+			<?php if ( 'video' !== get_post_format( $post->ID ) ) : ?>
 			<a href="<?php the_permalink(); ?>"><span class="excerpt-more-default">Read More ...</span></a>
+			<?php endif; ?>
 		</div><!-- .article-summary -->
 	<?php else : ?>
 		<div class="article-body">
