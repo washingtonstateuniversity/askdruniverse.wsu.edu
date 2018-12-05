@@ -28,9 +28,13 @@ class Dru_Post {
 	 */
 	public function add_question_field( $post ) {
 
-		$question = get_post_meta( get_the_ID(), '_dr_question_text', true );
+		if ( 'post' === $post->post_type ) {
 
-		include __DIR__ . '/question-field.php';
+			$question = get_post_meta( get_the_ID(), '_dr_question_text', true );
+
+			include __DIR__ . '/question-field.php';
+
+		} // End if
 
 	} // add_question_field
 
