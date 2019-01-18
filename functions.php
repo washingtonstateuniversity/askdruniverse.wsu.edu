@@ -67,3 +67,45 @@ function dr_get_clean_excerpt( $excerpt ) {
 	return $excerpt;
 
 } // End dr_get_clean_excerpt
+
+/**
+ * Add page footer widget area.
+ *
+ * @since 1.0.0
+ */
+function dr_add_above_footer_content( $context ) {
+
+	if ( ! is_front_page() ) {
+
+		if ( is_active_sidebar( 'before-footer' ) ) {
+
+			echo '<div class="before-footer-widget-area">';
+			dynamic_sidebar( 'before-footer' );
+			echo '</div>';
+		} // End if
+	} // End if
+
+} // End add_above_footer_content
+
+add_action( 'spine_theme_template_before_footer', 'dr_add_above_footer_content' );
+
+/**
+ * Add page footer sidebar.
+ *
+ * @since 1.0.0
+ */
+function dr_add_before_footer() {
+	register_sidebar(
+		array(
+			'name'          => 'Before Footer',
+			'id'            => 'before-footer',
+			'description'   => 'Widgets in this area will be shown on all posts and pages.',
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget'      => '</div>',
+			'before_title'      => '<h2 class="widgettitle">',
+			'after_title'       => '</h2>',
+		)
+	);
+}
+
+add_action( 'widgets_init', 'dr_add_before_footer' );
